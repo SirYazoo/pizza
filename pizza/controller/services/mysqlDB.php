@@ -26,11 +26,9 @@ class MySQLDB{
 		$this->openConnection();
 		$query_result=$this->db_connection->query($sql);
 		$result=[];
-		if($query_result!=[]){
-			if($query_result->num_rows > 0){
-				while($row=$query_result->fetch_row()){
-					$result = $row;
-				}
+		if($query_result->num_rows > 0){
+			while($row=$query_result->fetch_row()){
+				$result = $row;
 			}
 		}
 		$this->closeConnection();
@@ -42,6 +40,10 @@ class MySQLDB{
 		$query_result=$this->db_connection->query($sql);
 		$this->closeConnection();
 		return $query_result;
+	}
+
+	public function getConnection(){
+		return $this->db_connection;
 	}
 
 	public function escapeString($input){

@@ -16,26 +16,33 @@ class HomeController{
     public function validate(){
         $uname = $_POST['uname'];
         $pass = $_POST['psw'];
-        $query="SELECT IdPeran, Username, Password FROM user WHERE Username=";
+        $query="SELECT * FROM user WHERE Username=";
         if(isset($uname) && $uname!=""){
             $uname = $this->db->escapeString($uname);
-            $query.="'$uname' AND ";
+            $query.= "'". $uname ."' AND ";
         }
         if(isset($pass) && $pass!=""){
             $pass = $this->db->escapeString($pass);
-            $query.="Password='$pass'";
+            $query.="Password='". $pass ."'";
         }
         $res = $this->db->executeSelectQuery($query);
         if(count($res)!=0){
-            if($res[0][0]==1){
+            session_start();
+                $_SESSION['role']=$res[0]["IdPeran"];
+            session_write_close();
+            if($res[0]["IdPeran"]==1){
                 header('Location: admin');
             }
-            else if($res[0][0]==2){
+            else if($res[0]["IdPeran"]==2){
                 header('Location: kasir');
             }
         }
         else{
-                return View::createView('halamanUtama.php', []);
+            echo "
+                <script type='text/javascript'>
+                    alert('Wrong Username or Password');
+                </script>";
+            return View::createView('halamanUtama.php', []);
         }
     }
 }

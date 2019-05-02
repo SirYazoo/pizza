@@ -1,7 +1,7 @@
 <?php
-    require_once "services/mysqlDB.php";
-    require_once "services/view.php";
-    require_once "../model/user.php";
+    require_once __DIR__."/services/mysqlDB.php";
+    require_once __DIR__."/services/view.php";
+    require_once __DIR__."/../model/user.php";
 
 class KasirController{
     protected $db;

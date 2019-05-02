@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style/menutoppingadmin.css">
-        <script src="script/scriptPop1.js"></script>
+        <link rel="stylesheet" type="text/css" href="view/style/menutoppingadmin.css">
+        <script src="view/script/scriptPop1.js"></script>
     </head>
     <body>
         <div class="sidenav">
-            <a href="addTopping.php">Add Topping</a>
-            <a href="deleteTopping.php">Delete Topping</a>
-            <a href="addKasir.php">Add Kasir</a>
-            <a href="deleteKasir.php">Delete Kasir</a>
-            <a href="menuLaporan.php">Laporan</a>
-            <a href="halamanUtama.php">Log Out</a>
+            <a href="addTopping">Add Topping</a>
+            <a href="deleteTopping">Delete Topping</a>
+            <a href="addKasir">Add Kasir</a>
+            <a href="deleteKasir">Delete Kasir</a>
+            <a href="menuLaporan">Laporan</a>
+            <a href="halamanUtama">Log Out</a>
         </div>
         <div class="main">
             <form method="POST" action="addTopping">

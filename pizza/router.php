@@ -45,10 +45,15 @@
 	}
 	else if($_SERVER["REQUEST_METHOD"]=="POST"){
 		switch ($url){
-			case $baseURL."/signin":
+			case $baseURL."/halamanUtama":
 				require_once "controller/homeController.php";
 				$homeCtrl = new HomeController();
 				echo $homeCtrl -> validate();
+				break;
+			case $baseURL."/admin":
+				require_once "controller/adminController.php";
+				$adminCtrl = new AdminController();
+				echo $adminCtrl->view_admin();
 				break;
 			case $baseURL."/addTopping":
                 require_once "controller/toppingController.php";
