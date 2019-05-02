@@ -21,11 +21,29 @@
 				<input id="bahan" type="text" name="addNamaT" placeholder="Enter Nama" required>
 				<label for="harga">Harga</label>
 				<input id="harga" type="text" name="harga" placeholder="Enter Harga" required>
-            </form>
+                <div class="fungsi">
+				    <button type="submit" onclick="fungsiPopAddTopping()">Add</button>
+			    </div>
             </div>
-			<div class="fungsi">
-				<button type="submit" onclick="fungsiPopAddTopping()">Add</button>
-			</div>
+            </form>
         </div>
+        <table>
+	        <tr>
+		        <th>Id Topping</th>
+		        <th>Nama Topping</th>
+		        <th>Harga</th>
+	        </tr>
+	        <?php
+		        foreach ($result as $key => $row) {
+			        echo '
+				        <tr>
+					        <td>'.($key+1).'</td>
+					        <td>'.$row->nama.'</td>
+					        <td>'.$row->harga.'</td>
+				        </tr>
+			        ';
+		        }
+	        ?>
+        </table>
     </body>
 </html>

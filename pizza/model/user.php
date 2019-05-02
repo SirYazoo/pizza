@@ -1,13 +1,13 @@
 <?php
 class User{
     public $id;
-    public $name;
+    public $nama;
     public $username;
     public $password;
 
-    public function __construct($id, $name, $username, $password){
+    public function __construct($id, $nama, $username, $password){
         $this->id = $id;
-        $this->name = $name;
+        $this->nama = $nama;
         $this->username = $username;
         $this->password = $password;
     }

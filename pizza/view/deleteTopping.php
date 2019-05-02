@@ -18,12 +18,30 @@
             <h2>Topping</h2>
 			<div class="menu">
 				<label for="bahan">Nama Topping</label>
-				<input id="bahan" type="text" placeholder="Enter Nama" required>
-            </form>
+				<input id="bahan" type="text" name="delNamaT" placeholder="Enter Nama" required>
+                <div class="fungsi">
+				    <button type="submit" onclick="fungsiPopDeleteTopping()">Delete</button>
+			    </div>
             </div>
-			<div class="fungsi">
-				<button type="submit" onclick="fungsiPopDeleteTopping()">Delete</button>
-			</div>
+            </form>
         </div>
+        <table>
+	        <tr>
+		        <th>Id Topping</th>
+		        <th>Nama Topping</th>
+		        <th>Harga</th>
+	        </tr>
+	        <?php
+		        foreach ($result as $key => $row) {
+			        echo '
+				        <tr>
+					        <td>'.($key+1).'</td>
+					        <td>'.$row->nama.'</td>
+					        <td>'.$row->harga.'</td>
+				        </tr>
+			        ';
+		        }
+	        ?>
+        </table>
     </body>
 </html>

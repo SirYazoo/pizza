@@ -39,7 +39,7 @@ class ToppingController{
 		$harga = $_POST['harga'];
 		if(isset($nama) && $nama != ""){
 			$nama = $this->db->escapeString($nama);
-			$query = "INSERT INTO topping(Nama, Harga) VALUES (".$name.",".$harga.")";
+			$query = "INSERT INTO topping(Nama, Harga) VALUES (".$nama.",".$harga.")";
 			$query_result = $this->db->executeNonSelectQuery($query);
 		}
 	}

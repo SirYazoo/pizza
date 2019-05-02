@@ -16,15 +16,14 @@ class HomeController{
     public function validate(){
         $uname = $_POST['uname'];
         $pass = $_POST['psw'];
-        $query="SELECT `IdPeran`, `Username` FROM `user` WHERE `Username`=";
+        $query="SELECT IdPeran, Username, Password FROM user WHERE Username=";
         if(isset($uname) && $uname!=""){
             $uname = $this->db->escapeString($uname);
             $query.="'$uname' AND ";
         }
         if(isset($pass) && $pass!=""){
             $pass = $this->db->escapeString($pass);
-            $hashedPassword = md5($pass);
-            $query.="`Password`='$hashedPassword'";
+            $query.="Password='$pass'";
         }
         $res = $this->db->executeSelectQuery($query);
         if(count($res)!=0){
