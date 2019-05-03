@@ -5,18 +5,22 @@
 		<script src="view/script/scriptPop.js"></script>
     </head>
     <body>
+        <div class="sidenav">
+            <a href="addTopping">Add Topping</a>
+            <a href="deleteTopping">Delete Topping</a>
+            <a href="addKasir">Add Kasir</a>
+            <a href="deleteKasir">Delete Kasir</a>
+            <a href="menuLaporan">Laporan</a>
+            <a href="halamanUtama">Log Out</a>
+        </div>
         <div class="main">
-			<form method="POST" action="addKasir">
+			<form method="POST" action="deleteKasir">
             	<h2>Kasir</h2>
 				<div class="menu">
 					<label for="nama">Nama</label>
-					<input id="nama" type="text" name="addNamaK" placeholder="Enter Nama" required>
-					<label for="username">Username</label>
-					<input id="username" type="text" name="username" placeholder="Enter Username" required>
-					<label for="password">Password</label>
-					<input id="password" type="text" name="password" placeholder="Enter Password" required>
+					<input id="nama" type="text" name="delNamaK" placeholder="Enter Nama" required>
 				<div class="fungsi">
-					<button type="submit" onclick="fungsiPopAddKasir()">Add</button>
+					<button type="submit" onclick="fungsiPopDeleteKasir()">Delete</button>
 				</div>
 				</div>
 			</form>

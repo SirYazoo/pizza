@@ -12,16 +12,30 @@ class KasirController{
 
     public function view_addKasir(){
 		$result = $this->getAllKasir();
-		return View::createView('addKasir.php',[
-			"result"=> $result
-		]);
+		session_start();
+		if(isset($_SESSION["role"])){
+			return View::createViewAdmin('addKasir.php',[
+				"result"=> $result
+			]);
+		}
+		else{
+			header("Location: halamanUtama");
+		}
+		session_write_close();
 	}
 
 	public function view_deleteKasir(){
 		$result = $this->getAllKasir();
-		return View::createView('deleteKasir.php',[
-			"result"=> $result
-		]);
+		session_start();
+		if(isset($_SESSION["role"])){
+			return View::createViewAdmin('deleteKasir.php',[
+				"result"=> $result
+			]);
+		}
+		else{
+			header("Location: halamanUtama");
+		}
+		session_write_close();
 	}
     
     public function getAllKasir(){

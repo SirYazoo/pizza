@@ -5,14 +5,6 @@
         <script src="view/script/scriptPop1.js"></script>
     </head>
     <body>
-        <div class="sidenav">
-            <a href="addTopping">Add Topping</a>
-            <a href="deleteTopping">Delete Topping</a>
-            <a href="addKasir">Add Kasir</a>
-            <a href="deleteKasir">Delete Kasir</a>
-            <a href="menuLaporan">Laporan</a>
-            <a href="halamanUtama">Log Out</a>
-        </div>
         <div class="main">
             <form method="POST" action="deleteTopping">
             <h2>Topping</h2>
@@ -25,7 +17,7 @@
             </div>
             </form>
         </div>
-        <table>
+        <table id="tabel">
 	        <tr>
 		        <th>Id Topping</th>
 		        <th>Nama Topping</th>

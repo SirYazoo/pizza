@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Bulan Mei 2019 pada 09.53
+-- Waktu pembuatan: 03 Bulan Mei 2019 pada 07.57
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -35,7 +35,8 @@ CREATE TABLE `pembelian` (
   `HargaPizza` int(11) NOT NULL,
   `IdTopping` int(11) NOT NULL,
   `NamaTopping` varchar(50) NOT NULL,
-  `HargaTopping` int(11) NOT NULL
+  `HargaTopping` int(11) NOT NULL,
+  `TanggalPembelian` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,8 +88,7 @@ INSERT INTO `pizza` (`IdPizza`, `Ukuran`, `Harga`) VALUES
 CREATE TABLE `topping` (
   `IdTopping` int(11) NOT NULL,
   `Nama` varchar(50) NOT NULL,
-  `Harga` int(11) NOT NULL,
-  `IdPizza` int(11) NOT NULL
+  `Harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -120,7 +120,9 @@ INSERT INTO `user` (`IdUser`, `Nama`, `Username`, `Password`, `IdPeran`) VALUES
 -- Indeks untuk tabel `pembelian`
 --
 ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`IdPembelian`);
+  ADD PRIMARY KEY (`IdPembelian`),
+  ADD KEY `FK_IdTopping` (`IdTopping`),
+  ADD KEY `FK_IdPizza` (`IdPizza`);
 
 --
 -- Indeks untuk tabel `peran`
@@ -138,8 +140,7 @@ ALTER TABLE `pizza`
 -- Indeks untuk tabel `topping`
 --
 ALTER TABLE `topping`
-  ADD PRIMARY KEY (`IdTopping`),
-  ADD KEY `FK_IdPizza` (`IdPizza`);
+  ADD PRIMARY KEY (`IdTopping`);
 
 --
 -- Indeks untuk tabel `user`
@@ -188,10 +189,11 @@ ALTER TABLE `user`
 --
 
 --
--- Ketidakleluasaan untuk tabel `topping`
+-- Ketidakleluasaan untuk tabel `pembelian`
 --
-ALTER TABLE `topping`
-  ADD CONSTRAINT `FK_IdPizza` FOREIGN KEY (`IdPizza`) REFERENCES `pizza` (`IdPizza`);
+ALTER TABLE `pembelian`
+  ADD CONSTRAINT `FK_IdPizza` FOREIGN KEY (`IdPizza`) REFERENCES `pizza` (`IdPizza`),
+  ADD CONSTRAINT `FK_IdTopping` FOREIGN KEY (`IdTopping`) REFERENCES `topping` (`IdTopping`);
 
 --
 -- Ketidakleluasaan untuk tabel `user`

@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__."/services/mysqlDB.php";
     require_once __DIR__."/services/view.php";
-    require_once __DIR__."/../model/topping.php";
+    require_once __DIR__."/../model/pembelian.php";
 
 class ToppingController{
     protected $db;
@@ -14,7 +14,7 @@ class ToppingController{
 		$result = $this->getAllTopping();
 		session_start();
 		if(isset($_SESSION["role"])){
-			return View::createViewAdmin('addTopping.php',[
+			return View::createViewKasir('addTopping.php',[
 				"result"=> $result
 			]);
 		}
@@ -39,7 +39,7 @@ class ToppingController{
 	}
     
     public function getAllTopping(){
-		$query = "SELECT * FROM topping";
+		$query = "SELECT topping.IdTopping,topping.Nama,topping.Harga FROM topping";
 		$query_result = $this->db->executeSelectQuery($query);
 		$result = [];
 		foreach ($query_result as $key => $value) {

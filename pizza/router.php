@@ -15,7 +15,7 @@
 				break;
 			case $baseURL."/kasir":
 				require_once "controller/kasirController.php";
-				$kasirCtrl = new KasirController();
+				$kasirCtrl = new StaffController();
 				echo $kasirCtrl -> view_kasir();
 				break;
 			case $baseURL."/addTopping":
@@ -38,6 +38,11 @@
 				$kasirCtrl = new KasirController();
 				echo $kasirCtrl -> view_deleteKasir();
 				break;
+			case $baseURL."/logout":
+				require_once "controller/homeController.php";
+				$homeCtrl = new HomeController();
+				echo $homeCtrl->logout();
+				break;
 			default:
 				echo '404 not found';
 				break;
@@ -49,11 +54,6 @@
 				require_once "controller/homeController.php";
 				$homeCtrl = new HomeController();
 				echo $homeCtrl -> validate();
-				break;
-			case $baseURL."/admin":
-				require_once "controller/adminController.php";
-				$adminCtrl = new AdminController();
-				echo $adminCtrl->view_admin();
 				break;
 			case $baseURL."/addTopping":
                 require_once "controller/toppingController.php";

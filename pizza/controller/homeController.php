@@ -1,6 +1,6 @@
 <?php
-    require_once "services/mysqlDB.php";
-    require_once "services/view.php";
+    require_once __DIR__."/services/mysqlDB.php";
+    require_once __DIR__."/services/view.php";
 
 class HomeController{
     protected $db;
@@ -44,6 +44,14 @@ class HomeController{
                 </script>";
             return View::createView('halamanUtama.php', []);
         }
+    }
+
+    public function logout(){
+        session_start();
+            unset($_SESSION['role']);
+        session_destroy();
+        session_write_close();
+        return View::createView('halamanUtama.php', []);
     }
 }
 ?>
